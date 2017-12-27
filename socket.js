@@ -18,6 +18,8 @@ wss.onmessage = (msg) => {
         console.log("on request received");
     }
 
+        
+
     if (data[1] == 'oc') {
         console.log("oc request received");
     }

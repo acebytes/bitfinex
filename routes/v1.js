@@ -1,6 +1,7 @@
 var express = require('express');
 var router = express.Router();
 var bitfinex = require('../models/bitfinex');
+var unicoin = require('../gateway/unicoin');
 
 router.get('/pubticker/:symbol', function (req, res, next) {
   bitfinex.pubticker(req.params.symbol, function (err, response) {
@@ -117,6 +118,13 @@ router.post('/order/cancel/multi', function (req, res, next) {
   });
 });
 
-
+router.post('/callback', function (req, res, next) {
+  unicoin.sendRequest('/api/v1/callback/buy', { ramaz: 'shemovedi shensiiii' }, function (err, response) {
+    if (err)
+      res.json({ error: err });
+    else
+      res.json(response);
+  });
+});
 
 module.exports = router;
