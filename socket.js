@@ -5,7 +5,7 @@ const crypto = require('crypto-js');
 const wss = new WebSocket(bitfinex.wssUrl);
 
 wss.onmessage = (msg) => {
-    
+
     console.log(msg.data);
 
     data = JSON.parse(msg.data);
@@ -32,8 +32,8 @@ wss.onopen = () => {
     const apiKey = bitfinex.apiKey;
     const apiSecret = bitfinex.apiSecret;
 
-    const authNonce = Date.now() * 1000
-    const authPayload = 'AUTH' + authNonce
+    const authNonce = Date.now() * 1000;
+    const authPayload = 'AUTH' + authNonce;
     const authSig = crypto
         .HmacSHA384(authPayload, apiSecret)
         .toString(crypto.enc.Hex)

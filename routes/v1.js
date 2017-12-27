@@ -66,7 +66,7 @@ router.get('/balances', function (req, res, next) {
 });
 
 router.get('/order/hist', function (req, res, next) {
-  bitfinex.orderHist( function (err, response) {
+  bitfinex.orderHist(function (err, response) {
     if (err)
       res.json({ error: err });
     else
@@ -82,7 +82,7 @@ router.post('/order/new', function (req, res, next) {
     exchange: req.body.exchange,
     side: req.body.side,
     type: req.body.type,
-  },function (err, response) {
+  }, function (err, response) {
     if (err)
       res.json({ error: err });
     else
@@ -91,7 +91,7 @@ router.post('/order/new', function (req, res, next) {
 });
 
 router.post('/order/cancel', function (req, res, next) {
-  bitfinex.orderCancel( req.body.id, function (err, response) {
+  bitfinex.orderCancel(req.body.id, function (err, response) {
     if (err)
       res.json({ error: err });
     else
@@ -100,7 +100,7 @@ router.post('/order/cancel', function (req, res, next) {
 });
 
 router.post('/order/status', function (req, res, next) {
-  bitfinex.orderStatus( req.body.id, function (err, response) {
+  bitfinex.orderStatus(req.body.id, function (err, response) {
     if (err)
       res.json({ error: err });
     else
@@ -109,7 +109,7 @@ router.post('/order/status', function (req, res, next) {
 });
 
 router.post('/order/cancel/multi', function (req, res, next) {
-  bitfinex.orderCancelMulti( req.body.ordersIds, function (err, response) {
+  bitfinex.orderCancelMulti(req.body.ordersIds, function (err, response) {
     if (err)
       res.json({ error: err });
     else
