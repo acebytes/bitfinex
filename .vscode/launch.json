@@ -1,0 +1,28 @@
+{
+        "version": "0.2.0",
+        "configurations": [
+        {
+            "type": "node",
+            "request": "launch",
+            "name": "Gulp task",
+            "program": "${workspaceRoot}/socket.js",
+            "args": [
+                "task"
+            ]
+        },
+          
+        {
+            "type": "node",
+            "request": "launch",
+            "name": "start",
+            "program": "${workspaceRoot}\\bin\\www",
+            "cwd": "${workspaceRoot}"      
+        },
+            {
+                "type": "node",
+                "request": "launch",
+                "name": "Launch Program",
+                "program": "${workspaceRoot}\\bin\\www"
+            }
+        ]
+    }
