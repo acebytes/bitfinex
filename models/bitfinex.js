@@ -1,7 +1,7 @@
 var express = require('express');
 var BFX = require('bitfinex-api-node');
 var gateway = require('../gateway/bitfinex');
-var order = require('../models/order');
+// var order = require('../models/order');
 
 var bfxRest = new BFX(gateway.apiKey, gateway.apiSecret, { version: 1 }).rest;
 
@@ -66,10 +66,8 @@ module.exports.orderHist = function (callback) {
 };
 
 module.exports.orderNew = function (data, callback) {
-
     // order.ping();
     // callback("OKOKOKOK", "OKOK");
-
     bfxRest.new_order(data.symbol, data.amount, data.price, data.exchange, data.side, data.type, (err, res) => {
         callback((err != null) ? err.message : null, res);
     })
