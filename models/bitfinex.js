@@ -1,13 +1,39 @@
 var express = require('express');
 var BFX = require('bitfinex-api-node');
 var gateway = require('../gateway/bitfinex');
-// var order = require('../models/order');
+const crypto = require('crypto-js');
 
 var bfxRest = new BFX(gateway.apiKey, gateway.apiSecret, { version: 1 }).rest;
 
 module.exports.apiKey = gateway.apiKey;
 module.exports.apiSecret = gateway.apiSecret;
 module.exports.wssUrl = gateway.wssUrl;
+
+module.exports.socketAuth = (wss) => {
+
+    const apiKey = gateway.apiKey;
+    const apiSecret = gateway.apiSecret;
+
+    const authNonce = Date.now() * 1000;
+    const authPayload = 'AUTH' + authNonce;
+    const authSig = crypto
+        .HmacSHA384(authPayload, apiSecret)
+        .toString(crypto.enc.Hex)
+
+    const payload = {
+        apiKey,
+        authSig,
+        authNonce,
+        authPayload,
+        event: 'auth'
+    }
+
+    wss.send(JSON.stringify(payload));
+
+    wss.send(JSON.stringify({
+        "event": "ping"
+    }));
+};
 
 module.exports.pubticker = function (symbol, callback) {
     bfxRest.ticker(symbol, (err, res) => {
