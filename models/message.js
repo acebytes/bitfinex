@@ -2,8 +2,9 @@ const unicoin = require('../gateway/unicoin');
 const loggerHeartbeats = require('../logger/heartbeat');
 const loggerMessages = require('../logger/message');
 const randomstring = require("randomstring");
+const config = require('../config/config');
 
-const url = '/api/v1/callback/buy';
+const url = config.callback;
 
 module.exports.parse = ( msg, wss ) => {
     var request_id = randomstring.generate(20);

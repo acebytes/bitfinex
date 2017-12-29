@@ -1,9 +1,10 @@
 const request = require('request')
 const crypto = require('crypto')
+const config = require('../config/config');
 
 var apiKey = 'OzQtPN3A3yjpx0lumfDoNpWkEUzhV3bI7mUlQTazfRo';
 var apiSecret = 'Dn5h1EQbhuFwjQ3W1ut61XOneAP1gSB9HEXoO83fnsi';
-var baseUrl = 'http://api.unicoin.ge'
+var baseUrl = config.callbackBase;
 
 module.exports.apiKey = apiKey;
 module.exports.apiSecret = apiSecret;
