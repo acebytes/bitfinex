@@ -7,6 +7,10 @@ const config = require('../config/config');
 const url = config.callback;
 
 module.exports.parse = ( msg, wss ) => {
+
+    loggerHeartbeats.init();
+    loggerMessages.init();
+
     var request_id = randomstring.generate(20);
     var data = JSON.parse(msg);
 
