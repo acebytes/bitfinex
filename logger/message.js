@@ -6,7 +6,7 @@ function MessagesLogger() {
         const SimpleNodeLogger = require('simple-node-logger'),
     
             opts = {
-                logFilePath: 'logs/heartbeats/messages-' + moment().format("Y-MM-DD") + '.log',
+                logFilePath: 'logs/messages/messages-' + moment().format("Y-MM-DD") + '.log',
                 timestampFormat: 'YYYY-MM-DD HH:mm:ss.SSS'
             };
     
