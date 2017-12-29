@@ -20,7 +20,7 @@ module.exports.parse = ( msg, wss ) => {
     if( data.event == 'info' && data.code == 20051){
         wss.reconnect();
     }else if (data[1] == 'hb') {        
-        loggerHeartbeats.write('Heart Beating <3... take a big breath... :)');
+        loggerHeartbeats.write('Heart Beating <3... take a deep breath... :)');
     } else {
 
         // console.log(msg);
