@@ -64,7 +64,7 @@ WebSocketClient.prototype.onopen = function (e) {
 }
 
 WebSocketClient.prototype.onmessage = function (data, flags, number) {
-   message.parse(data);   
+   message.parse( data, this );   
 }
 
 WebSocketClient.prototype.onerror = function (e) {
