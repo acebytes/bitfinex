@@ -41,6 +41,15 @@ module.exports.pubticker = function (symbol, callback) {
     });
 };
 
+module.pubtickerPromise = (symbol) => {
+    return new Promise((resolve, reject) => {
+        bfxRest.ticker(symbol, (err, res) => {
+            if (err != null) reject(err);
+            else resolve(res);
+        });
+    });
+}
+
 module.exports.account_infos = function (callback) {
     bfxRest.account_infos((err, res) => {
         callback((err != null) ? err.message : null, res);
