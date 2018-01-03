@@ -2,6 +2,7 @@ var express = require('express');
 var BFX = require('bitfinex-api-node');
 var gateway = require('../gateway/bitfinex');
 const crypto = require('crypto-js');
+const rx = require('rx');
 
 var bfxRest = new BFX(gateway.apiKey, gateway.apiSecret, { version: 1 }).rest;
 
@@ -41,7 +42,7 @@ module.exports.pubticker = function (symbol, callback) {
     });
 };
 
-module.pubtickerPromise = (symbol) => {
+module.exports.pubtickerPromise = (symbol) => {
     return new Promise((resolve, reject) => {
         bfxRest.ticker(symbol, (err, res) => {
             if (err != null) reject(err);
@@ -51,6 +52,12 @@ module.pubtickerPromise = (symbol) => {
 }
 
 module.exports.account_infos = function (callback) {
+
+
+    // var obs = rx.Observable.of(() => {
+
+    // });
+
     bfxRest.account_infos((err, res) => {
         callback((err != null) ? err.message : null, res);
     })

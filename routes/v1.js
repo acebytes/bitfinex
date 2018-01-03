@@ -4,20 +4,12 @@ var bitfinex = require('../models/bitfinex');
 var unicoin = require('../gateway/unicoin');
 
 router.get('/pubticker/:symbol', function (req, res, next) {
-
   bitfinex.pubtickerPromise(req.params.symbol)
-    .then((response) => {
+    .then(response => {
       res.json(response);
     }).catch(err => {
       res.json({ error: err });
     });
-
-  // bitfinex.pubticker(req.params.symbol, function (err, response) {
-  //   if (err)
-  //     res.json({ error: err });
-  //   else
-  //     res.json(response);
-  // });
 });
 
 router.get('/account_infos', function (req, res, next) {
