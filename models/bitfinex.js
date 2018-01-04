@@ -53,11 +53,6 @@ module.exports.pubtickerPromise = (symbol) => {
 
 module.exports.account_infos = function (callback) {
 
-
-    // var obs = rx.Observable.of(() => {
-
-    // });
-
     bfxRest.account_infos((err, res) => {
         callback((err != null) ? err.message : null, res);
     })
