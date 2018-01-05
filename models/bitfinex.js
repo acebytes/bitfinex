@@ -52,7 +52,6 @@ module.exports.pubtickerPromise = (symbol) => {
 }
 
 module.exports.account_infos = function (callback) {
-
     bfxRest.account_infos((err, res) => {
         callback((err != null) ? err.message : null, res);
     })
@@ -102,9 +101,7 @@ module.exports.orderHist = function (callback) {
     })
 };
 
-module.exports.orderNew = function (data, callback) {
-    // order.ping();
-    // callback("OKOKOKOK", "OKOK");
+module.exports.orderNew = function (data, callback) {  
     bfxRest.new_order(data.symbol, data.amount, data.price, data.exchange, data.side, data.type, (err, res) => {
         callback((err != null) ? err.message : null, res);
     })
