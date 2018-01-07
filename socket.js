@@ -21,7 +21,7 @@ WebSocketClient.prototype.open = function (url) {
     });
     this.instance.on('close', (e) => {
         switch (e) {
-            case 1000:	// CLOSE_NORMAL
+            case 1000:	
                 console.log("WebSocket: closed");
                 break;
             default:	// Abnormal closure
