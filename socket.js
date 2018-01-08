@@ -4,7 +4,7 @@ const message = require('./models/message');
 
 
 function WebSocketClient() {
-    this.number = 0;	// Message number
+    this.number = 0;
     this.autoReconnectInterval = 5 * 1000;	// ms
 }
 
