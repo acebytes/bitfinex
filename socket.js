@@ -5,7 +5,7 @@ const message = require('./models/message');
 
 function WebSocketClient() {
     this.number = 0;
-    this.autoReconnectInterval = 5 * 1000;	// ms
+    this.autoReconnectInterval = 5 * 1000;	
 }
 
 
@@ -24,7 +24,7 @@ WebSocketClient.prototype.open = function (url) {
             case 1000:	
                 console.log("WebSocket: closed");
                 break;
-            default:	// Abnormal closure
+            default:	
                 this.reconnect(e);
                 break;
         }
